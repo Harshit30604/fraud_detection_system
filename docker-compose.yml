@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - shared_logs:/app/logs
+    networks:
+      - fraud_net
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    ports:
+      - "8501:8501"
+    volumes:
+      - shared_logs:/app/logs
+    networks:
+      - fraud_net
+    depends_on:
+      - fastapi
+    env_file:
+      - .env
+    restart: unless-stopped
+
+volumes:
+  shared_logs:
+
+networks:
+  fraud_net:
+    driver: bridge
