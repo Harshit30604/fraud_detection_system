@@ -1,0 +1,30 @@
+{
+  "models": [
+    {
+      "name": "Isolation Forest",
+      "f1": 0.39,
+      "auc_roc": 0.88,
+      "auc_pr": 0.45
+    },
+    {
+      "name": "Autoencoder",
+      "f1": 0.51,
+      "auc_roc": 0.94,
+      "auc_pr": 0.60
+    },
+    {
+      "name": "XGBoost",
+      "f1": 0.89,
+      "auc_roc": 0.99,
+      "auc_pr": 0.91
+    },
+    {
+      "name": "LSTM",
+      "f1": 0.85,
+      "auc_roc": 0.98,
+      "auc_pr": 0.86
+    }
+  ],
+  "best_model": "XGBoost",
+  "threshold": 0.42
+}
